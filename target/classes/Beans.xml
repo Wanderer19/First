@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+        default-init-method="init"
+        default-destroy-method="destroy"
+        >
+
+    <bean id="myTemplate" abstract="true">
+        <property name="message" value="Hello)">
+
+        </property>
+    </bean>
+
+    <bean id="checker" class="kontur.Checker">
+
+    </bean>
+
+    <bean id="helloWorld" class="kontur.HelloWorld" scope="prototype" parent="myTemplate">
+        <property name="checker" ref="checker"/>
+        <property name="frequencyDictionary">
+            <map>
+                <entry key="masha" value="5">
+
+                </entry>
+                <entry key="dasha" value="2"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="helloWorld2" class="kontur.HelloWorld2" scope="prototype" parent="helloWorld">
+        <property name="id" value="12345"/>
+    </bean>
+    <bean class="kontur.InitHelloWorld">
+
+    </bean>
+
+</beans>
